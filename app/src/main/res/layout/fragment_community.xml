@@ -6,11 +6,27 @@
     tools:context=".CommunityFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Community"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CommunityForumActivity">
+
+        <TextView
+            android:id="@+id/tvCommunityFbGrpUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Facebook Group URL: " />
+
+        <ListView
+            android:id="@+id/lvForum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCommunityFbGrpUrl"
+            android:layout_marginBottom="0dp" />
+    </RelativeLayout>
 
 </FrameLayout>

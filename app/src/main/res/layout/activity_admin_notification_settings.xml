@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminNotificationSettingsActivity">
+
+    <EditText
+        android:id="@+id/etNotiTitle"
+        android:layout_width="355dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:text="Notification Title"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tvNotiTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvNotiTitle" />
+
+    <EditText
+        android:id="@+id/etNotiContent"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:text="Notification Content"
+        app:layout_constraintStart_toStartOf="@+id/tvNotiContent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNotiContent" />
+
+    <Button
+        android:id="@+id/btnUpdateNoti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:onClick="btnUpdateNotiOnclick"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNotiTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="50dp"
+        android:text="Notification Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNotiContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Notification Content"
+        app:layout_constraintStart_toStartOf="@+id/etNotiTitle"
+        app:layout_constraintTop_toBottomOf="@+id/etNotiTitle" />
+</androidx.constraintlayout.widget.ConstraintLayout>

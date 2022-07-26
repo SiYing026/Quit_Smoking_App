@@ -1,5 +1,6 @@
 package com.example.quitsmokingapp;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +30,9 @@ public class ProfileFragment extends Fragment {
 
     private TextView tvName, tvEmail, tvPassword, tvAmt_cigarette, tvPrice_cigarette;
     RequestQueue queue;
-    String URL = "http://192.168.0.9/quitsmoking/user.php?email=dorae@gmail.com";
+    String URL;
+    Button btnSubscription;
+
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     @Override
@@ -36,12 +40,21 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        URL = "http://" + getString(R.string.ip_address) + "/quitsmoking/userprofile.php?email=dorae@gmail.com";
         tvName = view.findViewById(R.id.name);
         tvEmail = view.findViewById(R.id.email);
         tvPassword = view.findViewById(R.id.password);
         tvAmt_cigarette = view.findViewById(R.id.amt_cigarette);
         tvPrice_cigarette = view.findViewById(R.id.price_cigarette);
+        btnSubscription = view.findViewById(R.id.btnSubscription);
         queue = Volley.newRequestQueue(getContext());
+
+        btnSubscription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Subscription.class));
+            }
+        });
 
         StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -76,8 +89,6 @@ public class ProfileFragment extends Fragment {
             }
         });
         queue.add(request);
-
-
 
         return view;
     }

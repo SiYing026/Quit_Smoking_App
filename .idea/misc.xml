@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/activity_introductory.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/activity_payment.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/forum_list_item.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/fragment_achievement.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/fragment_community.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/fragment_home.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/fragment_profile.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/fragment_setting.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/gethelp_row.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/layout/layout_navigation_header.xml" value="0.2911458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/quitsmokingappNew/Quit_Smoking_App/app/src/main/res/menu/navigation_menu.xml" value="0.2911458333333333" />
         <entry key="..\:/Users/siyin/AndroidStudioProjects/QuitSmokingApp/app/src/main/res/drawable/custom_btn.xml" value="0.22" />
         <entry key="..\:/Users/siyin/AndroidStudioProjects/QuitSmokingApp/app/src/main/res/layout/activity_introductory.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/siyin/AndroidStudioProjects/QuitSmokingApp/app/src/main/res/layout/activity_login.xml" value="0.25" />

@@ -1,5 +1,6 @@
 package com.example.quitsmokingapp;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -57,9 +58,10 @@ public class HomeFragment extends Fragment {
     private TextView tv_title, tv_content;
 
     RequestQueue queue;
-    String URL = "http://192.168.0.9/quitsmoking/user.php?email=dorae@gmail.com";
-    String url_tips = "http://192.168.0.9/quitsmoking/tips.php?action=readOne&setting_type=smoking_tips";
-    String url_user_readone = "http://192.168.0.9/quitsmoking/user.php?action=readOne";
+    String URL;
+    String url_tips;
+    String url_user_readone;
+    String url_settings_readOne;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
 
@@ -68,6 +70,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        URL = "http://" + getString(R.string.ip_address) + "/quitsmoking/user.php?email=dorae@gmail.com";
+        url_tips = "http://" + getString(R.string.ip_address) + "/quitsmoking/settings.php?action=readOne&setting_type=smoking_tips";
+        url_user_readone = "http://" + getString(R.string.ip_address) + "/quitsmoking/user.php?action=readOne";
+        url_settings_readOne = "http://" + getString(R.string.ip_address) + "/quitsmoking/settings.php?action=readOne&setting_type=notification";
         timeElapsed = view.findViewById(R.id.tv_timeElapsed);
         item_createdTimeStamp = view.findViewById(R.id.tv_item_createdTimeStamp);
         amt_amount = view.findViewById(R.id.amount);
@@ -76,6 +82,7 @@ public class HomeFragment extends Fragment {
         tv_title = view.findViewById(R.id.tv_title);
         tv_content = view.findViewById(R.id.tv_content);
 
+        showNotificationAlert();
         showCurrentSetting();
         queue = Volley.newRequestQueue(getContext());
 
@@ -192,6 +199,40 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void showNotificationAlert() {
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.notification_alert);
+        dialog.show();
+
+        TextView tvNotificationAlert = dialog.findViewById(R.id.tvNotificationAlert);
+        TextView tvNotificationContent = dialog.findViewById(R.id.tvNotificationContent);
+
+        dialog.findViewById(R.id.btnNotificationAlert).setOnClickListener(view -> dialog.dismiss());
+
+        queue = Volley.newRequestQueue(getContext());
+        StringRequest request = new StringRequest(Request.Method.GET, url_settings_readOne, response -> {
+            try {
+                // get settings row in database in json format
+                JSONArray arrRow = new JSONArray(response);
+                JSONObject jObjRow = arrRow.getJSONObject(0);
+
+                // get content of notification settings in json format
+                String settingContentStr = jObjRow.getString("setting_content");
+                JSONObject jObjSettingContent = new JSONObject(settingContentStr);
+                tvNotificationAlert.setText(jObjSettingContent.getString("title"));
+                tvNotificationContent.setText(jObjSettingContent.getString("content"));
+
+            } catch (JSONException e) {
+                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+        }, error -> {
+            Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            Log.d("error",error.toString());
+        });
+        queue.add(request);
     }
 
     private void showCurrentSetting() {

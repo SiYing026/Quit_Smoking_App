@@ -27,6 +27,7 @@
 
         </activity>
         <activity android:name=".Register"/>
+        <activity android:name=".Subscription"/>
 
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
