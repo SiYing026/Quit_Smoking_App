@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2022 at 07:22 AM
+-- Generation Time: Jul 26, 2022 at 04:59 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quitsmoking`
+-- Database: `quit_smoking`
 --
 
 -- --------------------------------------------------------
@@ -33,13 +33,6 @@ CREATE TABLE `achievement` (
   `hint` varchar(500) CHARACTER SET latin1 NOT NULL,
   `reward` varchar(50) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `achievement`
---
-
-INSERT INTO `achievement` (`achievement_id`, `title`, `hint`, `reward`) VALUES
-(1, 'title1', 'hint1', 'Reward1');
 
 -- --------------------------------------------------------
 
@@ -82,9 +75,9 @@ CREATE TABLE `settings` (
 
 INSERT INTO `settings` (`setting_id`, `setting_type`, `setting_content`) VALUES
 (1, 'smoking_tips', '{\"title\":\"sample tips title\",\"content\":\"sample tips content\"}'),
-(2, 'notification', '{\"title\":\"sample noti\",\"content\":\"sample noti\"}'),
+(2, 'notification', '{\"title\": \"sample234\", \"content\":\"content2\"}'),
 (3, 'pro_plan', '{\"price\":\"6.66\"}'),
-(4, 'community', '{\"title\": \"www.facebook.comm\"}');
+(4, 'community', '{\"fb_grp_url\": \"www.facebook.comm\"}');
 
 -- --------------------------------------------------------
 
@@ -100,7 +93,7 @@ CREATE TABLE `user` (
   `pro` int(10) NOT NULL,
   `amt_cigarette` int(10) NOT NULL,
   `price_cigarette` double NOT NULL,
-  `created_time` datetime NOT NULL DEFAULT current_timestamp()
+  `created_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -108,9 +101,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `email`, `password`, `pro`, `amt_cigarette`, `price_cigarette`, `created_time`) VALUES
-(1, 'Mickey Mouse', 'mickeymouse@gmail.com', 'Mickey123!', 2, 5, 10, '2022-07-23 23:09:16'),
-(4, 'Doraemon', 'dorae@gmail.com', '$2y$10$50ObY.Q3quh4k0fBs00fHeEH7', 0, 12, 41, '2022-07-21 23:09:00'),
-(5, 'Thunder', 'thunder@gmail.com', '$2y$10$hOAqVdxzdrBnUvEkkRVECujje', 2, 5, 21, '2022-07-23 23:32:13');
+(1, 'Mickey Mouse', 'mickeymouse@gmail.com', 'Mickey123!@', 2, 5, 10, '2022-07-23 17:07:46'),
+(12, 'joey', 'chengxinye@gmail.com', 'Joey1234!@', 1, 5, 5, '2022-07-26 19:38:47');
 
 -- --------------------------------------------------------
 
@@ -171,7 +163,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `achievement`
 --
 ALTER TABLE `achievement`
-  MODIFY `achievement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `achievement_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `community_forum`
@@ -189,7 +181,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
