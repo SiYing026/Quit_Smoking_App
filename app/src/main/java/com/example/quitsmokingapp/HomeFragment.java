@@ -54,10 +54,13 @@ public class HomeFragment extends Fragment {
     AdView mAdView;
     Button share;
     TextView timeElapsed,item_createdTimeStamp, amt_amount, won_minutes;
+    private TextView tv_title, tv_content;
 
     RequestQueue queue;
     String URL = "http://192.168.0.9/quitsmoking/user.php?email=dorae@gmail.com";
+    String url_tips = "http://192.168.0.9/quitsmoking/tips.php?action=readOne&setting_type=smoking_tips";
     String url_user_readone = "http://192.168.0.9/quitsmoking/user.php?action=readOne";
+
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     @Override
@@ -70,17 +73,16 @@ public class HomeFragment extends Fragment {
         amt_amount = view.findViewById(R.id.amount);
         won_minutes = view.findViewById(R.id.minutes);
 
+        tv_title = view.findViewById(R.id.tv_title);
+        tv_content = view.findViewById(R.id.tv_content);
+
+        showCurrentSetting();
         queue = Volley.newRequestQueue(getContext());
 
 
         StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                name.setText(response.toString());
-//                email.setText(response.toString());
-//                password.setText(response.toString());
-//                amt_cigarette.setText(response.toString());
-//                price_cigarette.setText(response.toString());
                 JSONArray arr = null;
                 try {
                     arr = new JSONArray(response);
@@ -190,6 +192,38 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void showCurrentSetting() {
+        // select title and content from database and show
+        queue = Volley.newRequestQueue(getContext());
+        StringRequest request = new StringRequest(Request.Method.GET, url_tips, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    // get settings row in database in json format
+                    JSONArray arrRow = new JSONArray(response);
+                    JSONObject jObjRow = arrRow.getJSONObject(0);
+
+                    // get content of notification settings in json format
+                    String settingContentStr = jObjRow.getString("setting_content");
+                    JSONObject jObjSettingContent = new JSONObject(settingContentStr);
+                    tv_title.setText(jObjSettingContent.getString("title"));
+                    tv_content.setText(jObjSettingContent.getString("content"));
+
+                } catch (JSONException e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+                Log.d("error",error.toString());
+            }
+        });
+        queue.add(request);
     }
 
     private void checkIsUserPro() {

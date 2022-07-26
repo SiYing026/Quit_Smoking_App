@@ -86,58 +86,8 @@ public class Register extends AppCompatActivity {
     }
 
     //Password
-    /*private boolean vPassword() {
-        String vPass = password.getText().toString().trim();
-        String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{4,}" +               //at least 4 characters
-                "$";
-
-        if (vPass.isEmpty()) {
-            password.setError("Field cannot be empty");
-            return false;
-
-        } else if (!vPass.matches(passwordVal)) {
-            password.setError("Password is too weak");
-            return false;
-
-        } else {
-            password.setError(null);
-            return true;
-        }
-    }*/
 
     //Confirm Password
-    /*private boolean vCPassword() {
-        String vCPass = c_password.getText().toString().trim();
-        String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{4,}" +               //at least 4 characters
-                "$";
-
-        if (vCPass.isEmpty()) {
-            c_password.setError("Field cannot be empty");
-            return false;
-
-        } else if (!vCPass.matches(passwordVal)) {
-            c_password.setError("Password is too weak");
-            return false;
-
-        } else {
-            c_password.setError(null);
-            return true;
-        }
-    }*/
 
     //Password && Confirm Password
     private boolean vPass() {

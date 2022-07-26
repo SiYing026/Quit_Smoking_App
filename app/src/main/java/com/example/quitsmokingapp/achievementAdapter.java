@@ -29,11 +29,11 @@ import java.util.Map;
 
 public class achievementAdapter extends RecyclerView.Adapter<achievementAdapter.achievementHolder>{
 
-    Context context;
-    List<Achievement> achievementList;
+    final Context context;
+    final List<Achievement> achievementList;
 
     RequestQueue queue;
-    String URL = "http://192.168.0.108/quitSmoke/insertComplete.php";
+    final String URL = "http://192.168.0.108/quitSmoke/insertComplete.php";
     @RequiresApi(api = Build.VERSION_CODES.N)
 
 
@@ -66,7 +66,10 @@ public class achievementAdapter extends RecyclerView.Adapter<achievementAdapter.
 
     public class achievementHolder extends RecyclerView.ViewHolder{
 
-        TextView title, hint, reward, achievementid;
+        final TextView title;
+        final TextView hint;
+        final TextView reward;
+        final TextView achievementid;
         ImageView complete;
         Button btncomplete;
 
@@ -110,7 +113,7 @@ public class achievementAdapter extends RecyclerView.Adapter<achievementAdapter.
                             params.put("achievementid" , achievementid.getText().toString());
                             params.put("userid" , "1");
                             return params;
-                        };
+                        }
                     };
                     queue.add(request);
                     request.setRetryPolicy(new RetryPolicy() {

@@ -119,7 +119,6 @@ public class Login extends AppCompatActivity {
 
 
                             } catch (Exception e) {
-                                Toast.makeText(Login.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
                                 e.printStackTrace();
                                 loading.setVisibility(View.GONE);
                                 btn_login.setVisibility(View.VISIBLE);

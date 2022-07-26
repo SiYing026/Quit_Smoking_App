@@ -46,11 +46,6 @@ public class ProfileFragment extends Fragment {
         StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                name.setText(response.toString());
-//                email.setText(response.toString());
-//                password.setText(response.toString());
-//                amt_cigarette.setText(response.toString());
-//                price_cigarette.setText(response.toString());
                 JSONArray arr = null;
                 try {
                     arr = new JSONArray(response);
