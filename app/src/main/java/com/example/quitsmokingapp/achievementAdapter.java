@@ -29,11 +29,11 @@ import java.util.Map;
 
 public class achievementAdapter extends RecyclerView.Adapter<achievementAdapter.achievementHolder>{
 
-    final Context context;
+    Context context;
     final List<Achievement> achievementList;
 
     RequestQueue queue;
-    final String URL = "http://192.168.0.108/quitSmoke/insertComplete.php";
+    final String URL = "http://" + context.getString(R.string.ip_address) + "/quitSmoke/insertComplete.php";
     @RequiresApi(api = Build.VERSION_CODES.N)
 
 

@@ -1,6 +1,9 @@
 package com.example.quitsmokingapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,12 +41,13 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
+    Context context;
     EditText email, password;
     Button btn_login;
     TextView link_regist;
     ProgressBar loading;
     RequestQueue queue;
-    String URL = "http://192.168.0.9/quitsmoking/login.php";
+    String URL;
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     GoogleSignInOptions gso;
@@ -56,6 +60,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        URL = "http://" + getString(R.string.ip_address) + "/quitsmoking/login.php";
         loading = findViewById(R.id.loading);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
@@ -99,6 +104,7 @@ public class Login extends AppCompatActivity {
                                 arr = new JSONArray(response);
                                 JSONObject jObj = arr.getJSONObject(0);
                                 String error = jObj.getString("error");
+                                int user_id = jObj.getInt("user_id");
 
                                 if (error.equals("0")) {
 
@@ -108,7 +114,13 @@ public class Login extends AppCompatActivity {
 
                                         btn_login.setVisibility(View.GONE);
                                         loading.setVisibility(View.GONE);
-                                        Toast.makeText(Login.this, " Success Login \n  Your Email: " + email, Toast.LENGTH_LONG).show();
+
+                                        SharedPreferences pref = getSharedPreferences("user_id", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = pref.edit();
+                                        editor.putInt("user_id", user_id);
+                                        editor.commit();
+
+                                        Toast.makeText(Login.this, " Success Login \n  User ID: " + pref.getInt("user_id", 0), Toast.LENGTH_LONG).show();
 
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         startActivity(intent);

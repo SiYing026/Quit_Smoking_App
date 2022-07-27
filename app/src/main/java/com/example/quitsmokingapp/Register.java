@@ -31,13 +31,15 @@ public class Register extends AppCompatActivity {
     EditText name,email,password, c_password, amt_cigarette, price_cigarette;
     Button btn_regist;
     ProgressBar loading;
-    String URL = "http://192.168.0.9/quitsmoking/register.php";
+    String URL;
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        URL = "http://" + getString(R.string.ip_address) + "/quitsmoking/register.php";
         loading = findViewById(R.id.loading);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);

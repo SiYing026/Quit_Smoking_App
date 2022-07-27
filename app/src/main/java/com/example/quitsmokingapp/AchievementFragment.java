@@ -31,13 +31,14 @@ public class AchievementFragment extends Fragment {
     private RecyclerView recyclerView;
     private achievementAdapter achievementAdapter;
     private List<Achievement> achievementList;
-    public static final String SHOW_ALL_USER_DATA = "http://192.168.0.9/quitsmoking/outputAchievement.php";
+    public String SHOW_ALL_USER_DATA;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_achievement, container, false);
 
+        SHOW_ALL_USER_DATA = "http://" + getString(R.string.ip_address) + "/quitsmoking/outputAchievement.php";
         recyclerView = view.findViewById(R.id.recyclerViewList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
